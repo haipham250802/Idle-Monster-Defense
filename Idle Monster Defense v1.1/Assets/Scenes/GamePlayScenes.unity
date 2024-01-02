@@ -313,7 +313,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &644946913
 MonoBehaviour:
@@ -327,51 +327,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ccb5383b3cb75443902837f4f6f75ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1733913555847124494, guid: 3d99e1cb03e6adb4283163c09f0e271f, type: 3}
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.357271
-      value: 0.5011446
-      inSlope: 0.2701225
-      outSlope: 0.2701225
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.2314692
-      outWeight: 0.29527006
-    - serializedVersion: 3
-      time: 0.72733295
-      value: 0.72527534
-      inSlope: 0.8197569
-      outSlope: 0.8197569
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.19838098
-      outWeight: 0.31037894
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  quantityEnemy: 10
-  time: 60
+  indexWay: 0
+  listWay:
+  - enemy: {fileID: 1733913555847124494, guid: 3d99e1cb03e6adb4283163c09f0e271f, type: 3}
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.16351697
+        value: 0.39025703
+        inSlope: 1.7056556
+        outSlope: 1.7056556
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.11975752
+      - serializedVersion: 3
+        time: 0.56097347
+        value: 0.6842054
+        inSlope: 0.66977984
+        outSlope: 0.66977984
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.16448349
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    quantityEnemy: 2
+    time: 4
+  - enemy: {fileID: 1733913555847124494, guid: 3d99e1cb03e6adb4283163c09f0e271f, type: 3}
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.16351697
+        value: 0.39025703
+        inSlope: 1.7056556
+        outSlope: 1.7056556
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.11975752
+      - serializedVersion: 3
+        time: 0.56097347
+        value: 0.6842054
+        inSlope: 0.66977984
+        outSlope: 0.66977984
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.16448349
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    quantityEnemy: 3
+    time: 5
+  listEnemy: []
 --- !u!1 &871348604
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +468,99 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49166667
+--- !u!1001 &1062280063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1882649081}
+    m_Modifications:
+    - target: {fileID: 8744099490439401765, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_Name
+      value: Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401766, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: isTurrent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.317
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.506
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+--- !u!4 &1062280064 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8744099490439401767, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+  m_PrefabInstance: {fileID: 1062280063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1062280065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8744099490439401766, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+  m_PrefabInstance: {fileID: 1062280063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc340ea8bd6ff7748a24452f65c9f513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1339619162
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +627,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1394074535
 GameObject:
@@ -497,6 +638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1394074536}
+  - component: {fileID: 1394074537}
   m_Layer: 0
   m_Name: GamePlayManager
   m_TagString: Untagged
@@ -517,8 +659,24 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1394074537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394074535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60c0241326c8bb478f10a926dd4d695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 8744099490439401766, guid: be2db24a023247840bcaa4fb99e1b40d, type: 3}
+  spawnEnemyController: {fileID: 644946913}
+  itemGold: {fileID: 1612756927209938714, guid: 3d2735c6b3766b64d992e50c729be35e, type: 3}
+  itemCoin: {fileID: 806412841955617841, guid: 2fc9f353967c65345b4b7038811b3116, type: 3}
 --- !u!1 &1557130840
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,8 +845,9 @@ Transform:
   m_Children:
   - {fileID: 1557130842}
   - {fileID: 871348605}
+  - {fileID: 1062280064}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1882649082
 MonoBehaviour:
@@ -707,7 +866,8 @@ MonoBehaviour:
   fireRate: 1
   spriteRenderer: {fileID: 1557130841}
   bulletSpawn: {fileID: 4720103185162063486, guid: f4d2e714fc79181429dcaf929c247a03, type: 3}
-  attack: 0
+  healthBar: {fileID: 1062280065}
+  damageBonus: 0
   hp: 100
 --- !u!1 &1910513593
 GameObject:
@@ -744,7 +904,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &1910513595
 MonoBehaviour:
   m_ObjectHideFlags: 0
