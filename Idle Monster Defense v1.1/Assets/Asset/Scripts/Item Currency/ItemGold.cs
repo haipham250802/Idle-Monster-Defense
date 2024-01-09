@@ -6,6 +6,12 @@ public class ItemGold : ItemCurrencyBase
 {
     protected override void initData()
     {
-        DataController.Ins.DataCurrentcy.SetGold(quantityCoin);
+        DataController.Ins.DataCurrentcy.SetGold(Quantity);
+    }
+
+    protected override void initView()
+    {
+        int newCoin = GamePlayManager.Ins.GetQuantityGold(Quantity);
+        UIGamePlay.Ins.SetQuantityGold(newCoin);
     }
 }

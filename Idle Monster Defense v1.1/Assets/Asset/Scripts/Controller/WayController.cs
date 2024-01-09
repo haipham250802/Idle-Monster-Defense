@@ -14,9 +14,9 @@ public class WayController : MonoBehaviour
     private void Start()
     {
         timeCoolDown = 0;
-        spawnEnemy();
+     //   spawnEnemy();
     }
-    private void spawnEnemy()
+   /* private void spawnEnemy()
     {
         DOTween.To(() => 0f, _ =>
         {
@@ -32,5 +32,5 @@ public class WayController : MonoBehaviour
         }, quantityEnemy, time)
             .SetEase(curve);
     }
-
+*/
 }

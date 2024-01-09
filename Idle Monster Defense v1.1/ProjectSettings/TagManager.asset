@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemy
   - EnemyHit
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,10 @@ TagManager:
     locked: 0
   - name: Currency
     uniqueID: 459503693
+    locked: 0
+  - name: FX
+    uniqueID: 40889307
+    locked: 0
+  - name: UI
+    uniqueID: 3830060203
     locked: 0
