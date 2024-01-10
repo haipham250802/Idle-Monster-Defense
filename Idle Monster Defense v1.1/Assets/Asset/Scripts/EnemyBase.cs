@@ -42,6 +42,7 @@ public class EnemyBase : MonoBehaviour
     }
     protected virtual void Update()
     {
+        if (GamePlayManager.Ins.isLose) return;
         time += Time.deltaTime;
         if (time > timeAttack)
         {

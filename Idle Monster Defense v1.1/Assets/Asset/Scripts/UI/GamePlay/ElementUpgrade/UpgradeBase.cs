@@ -10,7 +10,7 @@ public abstract class UpgradeBase : MonoBehaviour
     [SerializeField] protected Text currentValue;
     [SerializeField] protected Text newValue;
     [SerializeField] protected Text coinUpgrade;
-
+    public int CoinUpgrade;
     public virtual void OnStart()
     {
         initButton();

@@ -13,11 +13,12 @@ public class UpgradeDamage : UpgradeBase
     {
         float currentDamage = Turrent.Ins.Damage;
         float newDamage = Turrent.Ins.GetNewDamage();
-        int coinUpgrade = GamePlayManager.Ins.GetCoinUpgrade(Turrent.Ins.indexUpradeDamage + 1, E_TypeUpgrade.DAMAGE);
-        initViewInfo(currentDamage, newDamage, coinUpgrade);
+        CoinUpgrade = GamePlayManager.Ins.GetCoinUpgrade(Turrent.Ins.indexUpradeDamage + 1, E_TypeUpgrade.DAMAGE);
+        initViewInfo(currentDamage, newDamage, CoinUpgrade);
     }
     protected override void upgrade()
     {
+        if (GamePlayManager.Ins.GetQuantityCoin() < CoinUpgrade) return;
         Turrent.Ins.indexUpradeDamage += 1;
         Turrent.Ins.SetDamage(Turrent.Ins.indexUpradeDamage);
         initUpgradeDamageStart();

@@ -13,11 +13,12 @@ public class UpgradeRangeAttack : UpgradeBase
     {
         float currentRangeAttack = Turrent.Ins.RangeAttack;
         float newRangeAttack = Turrent.Ins.GetNewRangeAttack();
-        int coinUpgrade = GamePlayManager.Ins.GetCoinUpgrade(Turrent.Ins.indexUpradeRangeAttack + 1, E_TypeUpgrade.RANGE_ATTACK);
-        initViewInfo(currentRangeAttack, newRangeAttack, coinUpgrade);
+        CoinUpgrade = GamePlayManager.Ins.GetCoinUpgrade(Turrent.Ins.indexUpradeRangeAttack + 1, E_TypeUpgrade.RANGE_ATTACK);
+        initViewInfo(currentRangeAttack, newRangeAttack, CoinUpgrade);
     }
     protected override void upgrade()
     {
+        if (GamePlayManager.Ins.GetQuantityCoin() < CoinUpgrade) return;
         Turrent.Ins.indexUpradeRangeAttack += 1;
         Turrent.Ins.SetRangeAttack(Turrent.Ins.indexUpradeRangeAttack);
         initUpgradeRangeAttackStart();

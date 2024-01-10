@@ -13,12 +13,12 @@ public class UpgradeAttackSpeed : UpgradeBase
     {
         float currentAttackSpeed = Turrent.Ins.AttackSpeed;
         float newAttackSpeed = Turrent.Ins.GetNewAttackSpeed();
-        int coinUpgrade = GamePlayManager.Ins.GetCoinUpgrade(Turrent.Ins.indexUpradeAttackSpeed + 1, E_TypeUpgrade.ATTACK_SPEED);
-        initViewInfo(currentAttackSpeed, newAttackSpeed, coinUpgrade);
+        CoinUpgrade = GamePlayManager.Ins.GetCoinUpgrade(Turrent.Ins.indexUpradeAttackSpeed + 1, E_TypeUpgrade.ATTACK_SPEED);
+        initViewInfo(currentAttackSpeed, newAttackSpeed, CoinUpgrade);
     }
     protected override void upgrade()
     {
-        Debug.Log("Upgrade attackspeed");
+        if (GamePlayManager.Ins.GetQuantityCoin() < CoinUpgrade) return;
         Turrent.Ins.indexUpradeAttackSpeed += 1;
         Turrent.Ins.SetAttackSpeed(Turrent.Ins.indexUpradeAttackSpeed);
         initUpgradeAttackSpeedStart();

@@ -31,6 +31,7 @@ public class Turrent : MonoBehaviour
     float fireTimer = 0;
     float currentHp;
     bool isDead;
+    bool isShowPopUpLose;
 
     public float DamageStart = 0;
     public float HpStart = 0;
@@ -159,6 +160,13 @@ public class Turrent : MonoBehaviour
         {
             currentHp = 0;
             isDead = true;
+            isShowPopUpLose = true;
+            GamePlayManager.Ins.isLose = true;
+            if (!GamePlayManager.Ins.isShowPopUpLose)
+            {
+                GamePlayManager.Ins.isShowPopUpLose = true;
+                UIShowPopUp.Ins.ShowPopUpLose();
+            }
         }
     }
     private void Shoot()

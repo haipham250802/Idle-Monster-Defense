@@ -9,12 +9,16 @@ public class GamePlayManager : MonoBehaviour
     [SerializeField] SpawnEnemyController spawnEnemyController;
     [SerializeField] ItemGold itemGold;
     [SerializeField] ItemCoin itemCoin;
+    [SerializeField] private int QuantityCoin = 0;
+    [SerializeField] private int QuantityGold = 0;
+    [SerializeField] private int QuantityGem = 0;
     [SerializeField] List<GameObject> listObjSpawnItem;
+
     public SpawnEnemyController SpawnEnemyController => spawnEnemyController;
     public HeatlhBar HealthBar => healthBar;
-    private int QuantityCoin = 0;
-    private int QuantityGold = 0;
-    private int QuantityGem = 0;
+    public bool isLose;
+    public bool isShowPopUpLose;
+  
     private void Awake()
     {
         if (Ins == null)
@@ -30,9 +34,17 @@ public class GamePlayManager : MonoBehaviour
     {
         return QuantityCoin += value;
     }
+    public int GetQuantityCoin()
+    {
+        return QuantityCoin;
+    }
     public int GetQuantityGold(int value)
     {
         return QuantityGold += value;
+    }
+    public int GetQuantityGold()
+    {
+        return QuantityGold;
     }
     public int GetQuantityGem(int value)
     {

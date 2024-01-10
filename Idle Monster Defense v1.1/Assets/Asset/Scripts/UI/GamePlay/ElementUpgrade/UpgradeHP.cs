@@ -13,11 +13,12 @@ public class UpgradeHP : UpgradeBase
     {
         float currentHp = Turrent.Ins.HP;
         float newHp = Turrent.Ins.GetNewHp();
-        int coinUpgrade = GamePlayManager.Ins.GetCoinUpgrade(Turrent.Ins.indexUpradeHp + 1, E_TypeUpgrade.HP);
-        initViewInfo(currentHp, newHp, coinUpgrade);
+        CoinUpgrade = GamePlayManager.Ins.GetCoinUpgrade(Turrent.Ins.indexUpradeHp + 1, E_TypeUpgrade.HP);
+        initViewInfo(currentHp, newHp, CoinUpgrade);
     }
     protected override void upgrade()
     {
+        if (GamePlayManager.Ins.GetQuantityCoin() < CoinUpgrade) return;
         Turrent.Ins.indexUpradeHp += 1;
         Turrent.Ins.SetHp(Turrent.Ins.indexUpradeHp);
         initUpgradeHPStart();
