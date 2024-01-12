@@ -12,7 +12,7 @@ public class UIShowPopUp : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    public void ShowPopUpWin()
+   /* public void ShowPopUpWin()
     {
         PopUpWin popup = Instantiate(Resources.Load<PopUpWin>("PopUp/PopUpWin"));
         popup.transform.SetParent(transform);
@@ -29,5 +29,5 @@ public class UIShowPopUp : MonoBehaviour
         popup.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
         popup.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
         popup.transform.SetAsLastSibling();
-    }
+    }*/
 }
