@@ -1,12 +1,13 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
-public class Turrent : MonoBehaviour
-{
-    #region avariable
-    public static Turrent Ins;
+using UnityEngine.UI;
 
+public class UIUpgrade : MonoBehaviour
+{
+    [SerializeField] private Text damageTxt;
+    [SerializeField] private Text hpTxt;
     [FoldoutGroup("STAT")]
     [SerializeField] float rangeAttack;
     [FoldoutGroup("STAT")]
@@ -18,20 +19,8 @@ public class Turrent : MonoBehaviour
     [FoldoutGroup("STAT")]
     [SerializeField] float hp;
 
-    [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] Bullet bulletSpawn;
-    [SerializeField] HeatlhBar healthBar;
+    [SerializeField] private List<UpgradeBase> listUpgradeBase;
 
-    public float Damage => damage;
-    public float AttackSpeed => fireRate;
-    public float HP => hp;
-    public float RangeAttack => rangeAttack;
-
-
-    float fireTimer = 0;
-    float currentHp;
-    bool isDead;
-    bool isShowPopUpLose;
 
     public float DamageStart = 0;
     public float HpStart = 0;
@@ -42,52 +31,34 @@ public class Turrent : MonoBehaviour
     public int indexUpradeHp;
     public int indexUpradeRangeAttack;
     public int indexUpradeAttackSpeed;
-    #endregion
+    public float Damage => damage;
+    public float AttackSpeed => fireRate;
+    public float HP => hp;
+    public float RangeAttack => rangeAttack;
 
-    private void OnValidate()
+    private void Start()
     {
-        spriteRenderer.transform.localScale = new Vector3(rangeAttack, rangeAttack, rangeAttack);
-    }
-    private void Awake()
-    {
-        if (!Ins)
-        {
-            Ins = this;
-        }
-        else
-            DestroyImmediate(gameObject);
+        initIndexStat();
+        initValueStatBase();
+        initStatTurrent();
+        initTextDamage();
+        initTextHp();
     }
     public void OnStart()
     {
         initIndexStat();
         initValueStatBase();
         initStatTurrent();
-        setUpValueStart();
-        healthBar.UpdateFillBar(currentHp, hp);
-        UIGamePlay.Ins.SetTextDamage(damage);
-        UIGamePlay.Ins.SetTextHp(hp);
-        UpdateRangeAttack();
+        initTextDamage();
+        initTextHp();
+        ElementUpgradeOnStart();
     }
-
-    private void Update()
+    private void ElementUpgradeOnStart()
     {
-        if (!isDead)
+        foreach (UpgradeBase item in listUpgradeBase)
         {
-            fireTimer += Time.deltaTime;
-            if (fireTimer > fireRate)
-            {
-                Shoot();
-            }
+            item.OnStart();
         }
-    }
-    public void UpdateRangeAttack()
-    {
-        spriteRenderer.transform.localScale = new Vector3(rangeAttack, rangeAttack, rangeAttack);
-    }
-    private void setUpValueStart()
-    {
-        fireTimer = 0;
-        currentHp = hp;
     }
     private void initIndexStat()
     {
@@ -109,6 +80,14 @@ public class Turrent : MonoBehaviour
         SetHp(indexUpradeHp);
         SetRangeAttack(indexUpradeRangeAttack);
         SetAttackSpeed(indexUpradeAttackSpeed);
+    }
+    private void initTextDamage()
+    {
+        damageTxt.text = damage.ToString();
+    }
+    private void initTextHp()
+    {
+        hpTxt.text = hp.ToString();
     }
     public void SetDamage(int index, float initBase = 1.1f, float value = 0.5f)
     {
@@ -152,62 +131,23 @@ public class Turrent : MonoBehaviour
         float result = start + index * (2 * init + value * (index + 1) - 2 * value) / 5;
         return result;
     }
-    public void RecieveDamage(float attack)
+    public int GetGoldUpgrade(int index, E_TypeUpgrade typeUpgrade)
     {
-        currentHp -= attack;
-        healthBar.UpdateFillBar(currentHp, hp);
-        if (currentHp < 0)
+        switch (typeUpgrade)
         {
-            currentHp = 0;
-            isDead = true;
-            isShowPopUpLose = true;
-            GamePlayManager.Ins.isLose = true;
-            if (!GamePlayManager.Ins.isShowPopUpLose)
-            {
-                GamePlayManager.Ins.isShowPopUpLose = true;
-              //  UIShowPopUp.Ins.ShowPopUpLose();
-            }
+            case E_TypeUpgrade.NONE:
+                break;
+            case E_TypeUpgrade.DAMAGE:
+                return index * 3 + ((index * 4) / 2);
+            case E_TypeUpgrade.HP:
+                return index * 2 + ((index * 3) / 2);
+            case E_TypeUpgrade.RANGE_ATTACK:
+                return index * 15 + ((index * 5) / 2);
+            case E_TypeUpgrade.ATTACK_SPEED:
+                return index * 5 + ((index * 3) / 2);
+            default:
+                break;
         }
-    }
-    private void Shoot()
-    {
-        Enemy enemy = calculateEnmeyNearest();
-        if (enemy != null)
-        {
-            GameObject bullet = SimplePool.Spawn(bulletSpawn.gameObject, Vector3.zero, Quaternion.identity);
-            bullet.transform.position = transform.position;
-            bullet.GetComponent<Bullet>().SetDamageBonus(damage);
-            bullet.GetComponent<Bullet>().MoveBullet(enemy.transform);
-            fireTimer = 0;
-        }
-    }
-    private Enemy calculateEnmeyNearest()
-    {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, rangeAttack);
-        List<Enemy> closestEnemies = new List<Enemy>();
-
-        foreach (Collider2D enemy in enemies)
-        {
-            Enemy enemyCache = enemy.GetComponent<Enemy>();
-            if (enemyCache)
-            {
-                closestEnemies.Add(enemyCache);
-            }
-        }
-        closestEnemies.Sort((a, b) => GetDistance2(transform.position, a.transform.position).CompareTo(GetDistance2(transform.position, b.transform.position)));
-        if (closestEnemies.Count > 0)
-            return closestEnemies[0];
-        return null;
-    }
-    private float GetDistance2(Vector2 a, Vector2 b)
-    {
-        return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, rangeAttack);
-        Gizmos.DrawWireSphere(transform.position, rangeHitEnemy);
+        return 0;
     }
 }
