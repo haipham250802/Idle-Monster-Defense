@@ -6,6 +6,13 @@ public class EnumManager : MonoBehaviour
 {
    
 }
+public enum TypeSellectLobby
+{
+    NONE = -1,
+    FIGHT,
+    UPGRADE,
+    SHOP
+}
 public enum E_TypeEnemy
 {
     NONE = -1,
