@@ -67,7 +67,7 @@ public class SpawnEnemyController : MonoBehaviour
     IEnumerator IE_delayShowWin()
     {
         yield return new WaitForSeconds(1f);
-        UIShowPopUp.Ins.ShowPopUpWin();
+      //  UIShowPopUp.Ins.ShowPopUpWin();
     }
     private void OnDisable()
     {

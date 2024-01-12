@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Idle Monster Defense v1.1/Assets/Asset/Resources.meta
 guid: 183786c9cff5b9142a7ac7de95fa9411
+========
+guid: aa7d4556c51d65742a62c34754f04e99
+>>>>>>>> origin/DucGiang2:Idle Monster Defense v1.1/Assets/Asset/Scripts/UI/GamePlay/PopUp.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

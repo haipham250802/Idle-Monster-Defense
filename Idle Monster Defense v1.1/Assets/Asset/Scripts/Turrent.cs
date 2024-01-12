@@ -165,7 +165,7 @@ public class Turrent : MonoBehaviour
             if (!GamePlayManager.Ins.isShowPopUpLose)
             {
                 GamePlayManager.Ins.isShowPopUpLose = true;
-                UIShowPopUp.Ins.ShowPopUpLose();
+              //  UIShowPopUp.Ins.ShowPopUpLose();
             }
         }
     }
