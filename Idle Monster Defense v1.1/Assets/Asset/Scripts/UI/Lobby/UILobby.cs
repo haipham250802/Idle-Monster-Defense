@@ -36,6 +36,7 @@ public class UILobby : MonoBehaviour
         TransitionSellect(typeSellectOnStart);
         UIUpgrade.OnStart();
     }
+
     private void initView()
     {
         int quantityGold = DataController.Ins.DataCurrentcy.GetGold();
