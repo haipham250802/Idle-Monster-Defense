@@ -7,10 +7,11 @@ using TigerForge;
 public class SpawnEnemyController : MonoBehaviour
 {
     [SerializeField] int indexWay;
+    [SerializeField] float timeNextWay;
     [SerializeField] List<WayInfo> listWay;
-    [SerializeField] List<EnemyBase> listEnemy;
+    [SerializeField] List<EnemyBase> listEnemyCheckEndGame;
 
-    public List<EnemyBase> ListEnemyBase => listEnemy;
+    public List<EnemyBase> ListEnemyCheckEndGame => listEnemyCheckEndGame;
     private void Start()
     {
         indexWay = 0;
@@ -19,27 +20,29 @@ public class SpawnEnemyController : MonoBehaviour
     }
     public void SpawnEnemy(WayInfo wayInfo)
     {
-        listEnemy = new();
+        listEnemyCheckEndGame = new();
         float timeCoolDown = 0;
         DOTween.To(() => 0f, _ =>
         {
             if (_ > timeCoolDown)
             {
+                int randTypeEnemy = Random.Range(0, wayInfo.listTypeEnemy.Count);
                 GameObject enemyClone = SimplePool.Spawn(wayInfo.enemy.gameObject, Vector3.zero, Quaternion.identity);
                 EnemyBase enemy = enemyClone.GetComponent<EnemyBase>();
                 enemy.transform.position = GameHelper.NewPosition(Turrent.Ins.transform);
                 enemy.Flip(Turrent.Ins.transform.position.x);
+                enemy.InitEnemy(wayInfo.listTypeEnemy[randTypeEnemy]);
                 enemy.resetStat();
                 enemy.Move();
                 timeCoolDown += 1;
-                listEnemy.Add(enemy);
+                listEnemyCheckEndGame.Add(enemy);
             }
         }, wayInfo.quantityEnemy, wayInfo.time)
             .SetEase(wayInfo.curve);
     }
     public bool checkCanNextWay()
     {
-        if (listEnemy.Count == 0)
+        if (listEnemyCheckEndGame.Count == 0)
             return true;
         return false;
     }
@@ -48,18 +51,23 @@ public class SpawnEnemyController : MonoBehaviour
         indexWay++;
         if (indexWay < listWay.Count)
         {
-            SpawnEnemy(listWay[indexWay]);
-            Debug.Log("Next Way");
+            StartCoroutine(IE_DelayNextWay());
         }
         else
         {
             StartCoroutine(IE_delayShowWin());
         }
     }
+    IEnumerator IE_DelayNextWay()
+    {
+        yield return new WaitForSeconds(timeNextWay);
+        SpawnEnemy(listWay[indexWay]);
+        Debug.Log("Next Way");
+    }
     IEnumerator IE_delayShowWin()
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log("Win");
+        UIShowPopUp.Ins.ShowPopUpWin();
     }
     private void OnDisable()
     {
@@ -69,6 +77,7 @@ public class SpawnEnemyController : MonoBehaviour
 [System.Serializable]
 public class WayInfo
 {
+    public List<E_TypeEnemy> listTypeEnemy;
     public EnemyBase enemy;
     public AnimationCurve curve;
     public int quantityEnemy;

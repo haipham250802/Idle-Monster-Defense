@@ -305,7 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2697872088818647748}
   quantityTxt: {fileID: 2697872088937324035}
-  quantityCoin: 0
+  Quantity: 3
 --- !u!210 &1790986975976062205
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -314,6 +314,6 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2697872089053724625}
   m_Enabled: 1
-  m_SortingLayerID: 459503693
-  m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingLayerID: -1429987807
+  m_SortingLayer: 2
+  m_SortingOrder: 3

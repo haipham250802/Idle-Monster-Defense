@@ -6,6 +6,12 @@ public class ItemGem : ItemCurrencyBase
 {
     protected override void initData()
     {
-        DataController.Ins.DataCurrentcy.SetGem(quantityCoin);
+        DataController.Ins.DataCurrentcy.SetGem(Quantity);
+    }
+
+    protected override void initView()
+    {
+        int newGem = GamePlayManager.Ins.GetQuantityGold(Quantity);
+        UIGamePlay.Ins.SetQuantityGem(newGem);
     }
 }

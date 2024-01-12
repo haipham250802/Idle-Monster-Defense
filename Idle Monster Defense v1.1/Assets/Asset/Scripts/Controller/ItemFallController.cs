@@ -20,6 +20,6 @@ public class ItemFallController : MonoBehaviour
         GameObject obj = SimplePool.Spawn(item.gameObject, trans.position, Quaternion.identity);
         obj.transform.DOJump(trans.position, 0.3f, 1, 0.2f);
         ItemCurrencyBase itemCurrency = obj.GetComponent<ItemCurrencyBase>();
-        itemCurrency.quantityCoin = quantity;
+        itemCurrency.Quantity = quantity;
     }
 }

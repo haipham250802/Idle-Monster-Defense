@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using TigerForge;
+using Sirenix.OdinInspector;
 public class EnemyBase : MonoBehaviour
 {
-    [SerializeField] bool isAttack;
-    [SerializeField] private float force;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SkeletonAnimation skeleton;
+
+    [SerializeField] bool isAttack;
+    [FoldoutGroup("Stat Enemy")]
+    [SerializeField] float force;
+    [FoldoutGroup("Stat Enemy")]
     [SerializeField] float timeAttack;
-    [SerializeField] int damage;
-    [SerializeField] int hp;
+    [FoldoutGroup("Stat Enemy")]
+    [SerializeField] float damage;
+    [FoldoutGroup("Stat Enemy")]
+    [SerializeField] float hp;
+    [FoldoutGroup("Stat Enemy")]
     [SerializeField] int quantityCoinKillMe;
+    [FoldoutGroup("Stat Enemy")]
     [SerializeField] int quantityGoldKillMe;
+    [FoldoutGroup("Stat Enemy")]
+
     [SerializeField] ItemFallController itemFallController;
     HeatlhBar healthBar;
     float currentHp = 0;
@@ -32,12 +42,26 @@ public class EnemyBase : MonoBehaviour
     }
     protected virtual void Update()
     {
+        if (GamePlayManager.Ins.isLose) return;
         time += Time.deltaTime;
         if (time > timeAttack)
         {
             Attack();
             time = 0;
         }
+    }
+    public void InitEnemy(E_TypeEnemy typeEnemy)
+    {
+        EnemyInfo enemyInfo = DataController.Ins.DataSOController.DataSOEnemy.GetEnemyOfType(typeEnemy);
+        skeleton.skeletonDataAsset = null;
+        skeleton.skeletonDataAsset = enemyInfo.skeleton;
+        skeleton.Initialize(true);
+        force = enemyInfo.speed;
+        timeAttack = enemyInfo.timeAttack;
+        damage = enemyInfo.Damage;
+        hp = enemyInfo.HP;
+        quantityCoinKillMe = enemyInfo.quantityCoinKill;
+        quantityGoldKillMe = enemyInfo.quantityGoldKill;
     }
     public virtual void resetStat()
     {
@@ -72,7 +96,7 @@ public class EnemyBase : MonoBehaviour
             SimplePool.Despawn(healthBar.gameObject);
             healthBar = null;
 
-            GamePlayManager.Ins.SpawnEnemyController.ListEnemyBase.Remove(this);
+            GamePlayManager.Ins.SpawnEnemyController.ListEnemyCheckEndGame.Remove(this);
             if (GamePlayManager.Ins.SpawnEnemyController.checkCanNextWay())
                 EventManager.EmitEvent(EventConstant.EV_NEXTWAY, 0);
 

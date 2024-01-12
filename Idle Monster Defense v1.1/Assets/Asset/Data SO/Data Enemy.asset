@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a5236e3b2d59049be0fbbd3062c065, type: 3}
+  m_Name: Data Enemy
+  m_EditorClassIdentifier: 
+  listEnemyInfo:
+  - TypeEnemy: 0
+    skeleton: {fileID: 11400000, guid: 0295bc5a501d2d84680e62a549b16b3a, type: 2}
+    Damage: 1
+    HP: 15
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 1
+    skeleton: {fileID: 11400000, guid: f155ab5fe00e7ce4ba511d462725d224, type: 2}
+    Damage: 1.5
+    HP: 20
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 2
+    skeleton: {fileID: 11400000, guid: d4bda105a6f15e4478bd5299d7425336, type: 2}
+    Damage: 1.8
+    HP: 20
+    speed: 0.12
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 3
+    skeleton: {fileID: 11400000, guid: a3f3e2add9644d049af272139fb1d95f, type: 2}
+    Damage: 2
+    HP: 25
+    speed: 0.1
+    timeAttack: 1.8
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 4
+    skeleton: {fileID: 11400000, guid: daade7544be1bdc43ab721450027a514, type: 2}
+    Damage: 2.3
+    HP: 30
+    speed: 0.13
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 5
+    skeleton: {fileID: 11400000, guid: 72fb108418482da4e8a98b497c1742dc, type: 2}
+    Damage: 3
+    HP: 25
+    speed: 0.15
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 6
+    skeleton: {fileID: 11400000, guid: ba0b9829e1a329840af85e3ddcc76873, type: 2}
+    Damage: 3.2
+    HP: 35
+    speed: 0.1
+    timeAttack: 1.5
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 7
+    skeleton: {fileID: 11400000, guid: 4e4ee19bba860e3419dc598f95d840c0, type: 2}
+    Damage: 3.5
+    HP: 35
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 8
+    skeleton: {fileID: 11400000, guid: eb86eea18f8de3644abd191c17b3390c, type: 2}
+    Damage: 4.5
+    HP: 40
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 9
+    skeleton: {fileID: 11400000, guid: c2614196a640e88479a2fd2c238ae66f, type: 2}
+    Damage: 5
+    HP: 45
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 10
+    skeleton: {fileID: 11400000, guid: 6fcf942b479666444b74389070e8af5d, type: 2}
+    Damage: 5.5
+    HP: 60
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 11
+    skeleton: {fileID: 11400000, guid: 8ad810ca04e57f9498ce7c14e5ec51d6, type: 2}
+    Damage: 6
+    HP: 70
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 12
+    skeleton: {fileID: 11400000, guid: 9da500348af758f4093512022f63833d, type: 2}
+    Damage: 6.5
+    HP: 80
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 13
+    skeleton: {fileID: 11400000, guid: eb88ddb2e8861a44183d5ca4c8ee934a, type: 2}
+    Damage: 7
+    HP: 100
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2
+  - TypeEnemy: 14
+    skeleton: {fileID: 11400000, guid: b2eaa243e0e548941a3c52c347acf75d, type: 2}
+    Damage: 8
+    HP: 120
+    speed: 0.1
+    timeAttack: 2
+    quantityCoinKill: 2
+    quantityGoldKill: 2

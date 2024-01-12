@@ -7,15 +7,20 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
     [SerializeField] private float damage;
+    [SerializeField] private GameObject fxHit;
     float currentDamage;
     private void Start()
     {
         currentDamage = damage;
     }
-    public void SetDamageBonus(float damageBonus)
+    private void spawnFX()
     {
+        GameObject fxHitClone = SimplePool.Spawn(fxHit, transform.position, Quaternion.identity);
+    }
+    public void SetDamageBonus(float damage)
+    {
+        this.damage = damage;
         currentDamage = damage;
-        currentDamage += damageBonus;
     }
     public void MoveBullet(Transform target)
     {
@@ -32,6 +37,7 @@ public class Bullet : MonoBehaviour
         {
             SimplePool.Despawn(gameObject);
             enemy.RecieveDamage(currentDamage);
+            spawnFX();
         }
     }
 }

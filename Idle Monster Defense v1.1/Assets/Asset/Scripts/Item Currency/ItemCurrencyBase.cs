@@ -7,7 +7,7 @@ public abstract class ItemCurrencyBase : MonoBehaviour
 {
     [SerializeField] SpriteRenderer icon;
     [SerializeField] TextMeshPro quantityTxt;
-    public int quantityCoin;
+    public int Quantity;
     private void OnEnable()
     {
         quantityTxt.gameObject.SetActive(false);
@@ -21,6 +21,8 @@ public abstract class ItemCurrencyBase : MonoBehaviour
     private void despawn()
     {
         initText();
+        initData();
+        initView();
         quantityTxt.gameObject.SetActive(true);
         transform.DOMoveY(transform.position.y + 0.25f, 1f);
         DOTween.To(() => 1f, _ =>
@@ -30,11 +32,15 @@ public abstract class ItemCurrencyBase : MonoBehaviour
             icon.color = color;
             quantityTxt.color = color;
         }, 0f, 1f)
-            .OnComplete(() => { initData(); });
+            .OnComplete(() =>
+            {
+                
+            });
     }
     public void initText()
     {
-        quantityTxt.text = quantityCoin.ToString();
+        quantityTxt.text = Quantity.ToString();
     }
     protected abstract void initData();
+    protected abstract void initView();
 }
