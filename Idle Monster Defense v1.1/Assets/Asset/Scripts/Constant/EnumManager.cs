@@ -6,6 +6,20 @@ public class EnumManager : MonoBehaviour
 {
    
 }
+public enum TypeScenes
+{
+    NONE = -1,
+    LOBBY,
+    GAMEPLAY
+}
+public enum TypeAudioClip
+{
+    NONE = -1,
+    AUCLIP_BUTTON,
+    AUCLIP_CLAIM,
+    WIN,
+    LOSE
+}
 public enum TypeSellectLobby
 {
     NONE = -1,
