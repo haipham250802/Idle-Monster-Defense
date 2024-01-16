@@ -24,7 +24,6 @@ public class HeatlhBar : MonoBehaviour
     }
     public void ResetFill()
     {
-        Debug.Log("rs");
         UpdateFillBar(1, 1);
     }
     public void UpdateFillBar(float currentHp, float maxHp)

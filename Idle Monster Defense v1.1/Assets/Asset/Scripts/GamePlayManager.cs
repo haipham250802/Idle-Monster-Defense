@@ -9,16 +9,21 @@ public class GamePlayManager : MonoBehaviour
     [SerializeField] SpawnEnemyController spawnEnemyController;
     [SerializeField] ItemGold itemGold;
     [SerializeField] ItemCoin itemCoin;
+    [SerializeField] NotiBossIsComing notiBossIsComing;
     [SerializeField] private int QuantityCoin = 0;
     [SerializeField] private int QuantityGold = 0;
     [SerializeField] private int QuantityGem = 0;
     [SerializeField] List<GameObject> listObjSpawnItem;
-
-    public SpawnEnemyController SpawnEnemyController => spawnEnemyController;
+    public NotiBossIsComing NotiBossIsComming => notiBossIsComing;
+    public SpawnEnemyController SpawnEnemyController
+    {
+        get { return spawnEnemyController; }
+        set { spawnEnemyController = value; }
+    }
     public HeatlhBar HealthBar => healthBar;
     public bool isLose;
     public bool isShowPopUpLose;
-  
+
     private void Awake()
     {
         if (Ins == null)
@@ -29,6 +34,12 @@ public class GamePlayManager : MonoBehaviour
     private void Start()
     {
         SpawnNoneCurrency();
+        loadZone();
+    }
+    private void loadZone()
+    {
+        int currentZone = DataController.Ins.DataInGame.GetIDZone();
+        Instantiate(Resources.Load<GameObject>("Zone/ZONE" + currentZone));
     }
     public int GetQuantityCoin(int value)
     {

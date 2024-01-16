@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
+        EnemyBase enemy = collision.GetComponent<EnemyBase>();
         if (enemy != null)
         {
             SimplePool.Despawn(gameObject);

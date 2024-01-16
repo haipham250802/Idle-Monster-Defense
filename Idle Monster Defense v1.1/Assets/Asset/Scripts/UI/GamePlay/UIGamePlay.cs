@@ -10,8 +10,10 @@ public class UIGamePlay : MonoBehaviour
     [SerializeField] private Text quantityGemClaim;
     [SerializeField] private Text damageTxt;
     [SerializeField] private Text hpTxt;
-
+    [SerializeField] private contentProcess _contentProcess;
     [SerializeField] private List<UpgradeBase> listUpgradeBase;
+
+    public contentProcess ContentProcess => _contentProcess;
 
     private void Awake()
     {

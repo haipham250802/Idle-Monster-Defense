@@ -165,13 +165,13 @@ public class Turrent : MonoBehaviour
             if (!GamePlayManager.Ins.isShowPopUpLose)
             {
                 GamePlayManager.Ins.isShowPopUpLose = true;
-              //  UIShowPopUp.Ins.ShowPopUpLose();
+                UIShowPopUp.Ins.ShowPopUpLose();
             }
         }
     }
     private void Shoot()
     {
-        Enemy enemy = calculateEnmeyNearest();
+        EnemyBase enemy = calculateEnmeyNearest();
         if (enemy != null)
         {
             GameObject bullet = SimplePool.Spawn(bulletSpawn.gameObject, Vector3.zero, Quaternion.identity);
@@ -181,14 +181,14 @@ public class Turrent : MonoBehaviour
             fireTimer = 0;
         }
     }
-    private Enemy calculateEnmeyNearest()
+    private EnemyBase calculateEnmeyNearest()
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, rangeAttack);
-        List<Enemy> closestEnemies = new List<Enemy>();
+        List<EnemyBase> closestEnemies = new List<EnemyBase>();
 
         foreach (Collider2D enemy in enemies)
         {
-            Enemy enemyCache = enemy.GetComponent<Enemy>();
+            EnemyBase enemyCache = enemy.GetComponent<EnemyBase>();
             if (enemyCache)
             {
                 closestEnemies.Add(enemyCache);
