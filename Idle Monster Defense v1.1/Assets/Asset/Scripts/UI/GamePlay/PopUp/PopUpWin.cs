@@ -9,6 +9,7 @@ public class PopUpWin : PopUpBase
 {
     [SerializeField] private Button claimBonusRWButton;
     [SerializeField] private Button nextButton;
+    [SerializeField] private Button homeButton;
     [SerializeField] private Text quantityGoldTxt;
     [SerializeField] private Image iconButton;
 
@@ -35,6 +36,10 @@ public class PopUpWin : PopUpBase
         {
             quantityGoldTxt.text = _.ToString();
         }, newGold, 0.3f);
+    }
+    private void onClickButtonHome()
+    {
+        SceneManager.LoadScene(1);
     }
     private void initQuantityGold()
     {
