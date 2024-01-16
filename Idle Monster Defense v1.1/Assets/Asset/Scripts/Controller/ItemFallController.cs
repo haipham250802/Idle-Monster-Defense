@@ -6,14 +6,21 @@ public class ItemFallController : MonoBehaviour
 {
     [SerializeField] private ItemCoin itemCoin;
     [SerializeField] private ItemGold itemGold;
-
+    [SerializeField] private bool isBoss;
     public ItemCurrencyBase ItemFall()
     {
-        int random = Random.Range(0, 100);
-        if (random < 20)
-            return itemGold;
+        if (!isBoss)
+        {
+            int random = Random.Range(0, 100);
+            if (random < 20)
+                return itemGold;
+            else
+                return itemCoin;
+        }
         else
-            return itemCoin;
+        {
+            return itemGold;
+        }
     }
     public void spawnItem(ItemCurrencyBase item, int quantity, Transform trans)
     {

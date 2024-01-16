@@ -6,6 +6,7 @@ using TigerForge;
 using Sirenix.OdinInspector;
 public class EnemyBase : MonoBehaviour
 {
+    [SerializeField] private E_TypeEnemy type;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SkeletonAnimation skeleton;
 
@@ -31,6 +32,7 @@ public class EnemyBase : MonoBehaviour
 
     Spine.EventData eventData;
     ItemCurrencyBase item;
+    public E_TypeEnemy Type => type;
     private void OnEnable()
     {
         item = itemFallController.ItemFall();
@@ -97,6 +99,10 @@ public class EnemyBase : MonoBehaviour
             healthBar = null;
 
             GamePlayManager.Ins.SpawnEnemyController.ListEnemyCheckEndGame.Remove(this);
+            GamePlayManager.Ins.SpawnEnemyController.currentQuantityEnemy--;
+            float maxValue = GamePlayManager.Ins.SpawnEnemyController.sumQuantityEnemy;
+           
+            UIGamePlay.Ins.ContentProcess.UpdateProgess(GamePlayManager.Ins.SpawnEnemyController.currentQuantityEnemy, maxValue);
             if (GamePlayManager.Ins.SpawnEnemyController.checkCanNextWay())
                 EventManager.EmitEvent(EventConstant.EV_NEXTWAY, 0);
 

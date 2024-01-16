@@ -3,20 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TigerForge;
-
+using Sirenix.OdinInspector;
 public class SpawnEnemyController : MonoBehaviour
 {
     [SerializeField] int indexWay;
     [SerializeField] float timeNextWay;
+    [FoldoutGroup("Boss")]
+    [SerializeField] EnemyBase Boss;
     [SerializeField] List<WayInfo> listWay;
     [SerializeField] List<EnemyBase> listEnemyCheckEndGame;
 
     public List<EnemyBase> ListEnemyCheckEndGame => listEnemyCheckEndGame;
+    public int sumQuantityEnemy;
+    public int currentQuantityEnemy;
     private void Start()
     {
         indexWay = 0;
         SpawnEnemy(listWay[indexWay]);
         EventManager.StartListening(EventConstant.EV_NEXTWAY, NextWay);
+        GamePlayManager.Ins.SpawnEnemyController = this;
+        UIGamePlay.Ins.ContentProcess.UpdateTextNextTurn(indexWay + 1);
+        sumQuantityEnemy = listWay[indexWay].quantityEnemy;
+        currentQuantityEnemy = sumQuantityEnemy;
+        UIGamePlay.Ins.ContentProcess.UpdateProgess(currentQuantityEnemy, sumQuantityEnemy);
+    }
+    public void SpawnBossEndWay()
+    {
+        GameObject enemyClone = SimplePool.Spawn(Boss.gameObject, Vector3.zero, Quaternion.identity);
+        EnemyBase enemy = enemyClone.GetComponent<EnemyBase>();
+        enemy.transform.position = GameHelper.NewPosition(Turrent.Ins.transform);
+        enemy.Flip(Turrent.Ins.transform.position.x);
+        enemy.InitEnemy(enemy.Type);
+        enemy.resetStat();
+        enemy.Move();
+        listEnemyCheckEndGame.Add(enemy);
     }
     public void SpawnEnemy(WayInfo wayInfo)
     {
@@ -61,13 +81,23 @@ public class SpawnEnemyController : MonoBehaviour
     IEnumerator IE_DelayNextWay()
     {
         yield return new WaitForSeconds(timeNextWay);
+        UIGamePlay.Ins.ContentProcess.UpdateTextNextTurn(indexWay + 1);
         SpawnEnemy(listWay[indexWay]);
-        Debug.Log("Next Way");
+        sumQuantityEnemy = listWay[indexWay].quantityEnemy;
+        currentQuantityEnemy = sumQuantityEnemy;
+        if (indexWay == listWay.Count - 1)
+        {
+            sumQuantityEnemy++;
+            currentQuantityEnemy = sumQuantityEnemy;
+            GamePlayManager.Ins.NotiBossIsComming.OnNotiBoss();
+            GamePlayManager.Ins.SpawnEnemyController.SpawnBossEndWay();
+        }
+        UIGamePlay.Ins.ContentProcess.UpdateProgess(currentQuantityEnemy, sumQuantityEnemy);
     }
     IEnumerator IE_delayShowWin()
     {
         yield return new WaitForSeconds(1f);
-      //  UIShowPopUp.Ins.ShowPopUpWin();
+        UIShowPopUp.Ins.ShowPopUpWin();
     }
     private void OnDisable()
     {

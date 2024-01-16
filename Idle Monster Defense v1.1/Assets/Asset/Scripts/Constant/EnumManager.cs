@@ -46,6 +46,9 @@ public enum E_TypeEnemy
     Enemy13,
     Enemy14,
     Enemy15,
+    Boss_Hami,
+    Boss_Ske,
+    Boss_kicker
 }
 public enum E_TypeUpgrade
 {
