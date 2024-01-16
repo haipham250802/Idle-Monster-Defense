@@ -18,7 +18,8 @@ public enum TypeAudioClip
     AUCLIP_BUTTON,
     AUCLIP_CLAIM,
     WIN,
-    LOSE
+    LOSE,
+    BULLET
 }
 public enum TypeSellectLobby
 {
