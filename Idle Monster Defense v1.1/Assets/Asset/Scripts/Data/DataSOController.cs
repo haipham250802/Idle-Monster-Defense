@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class DataSOController : MonoBehaviour
 {
-    public DataSOPlayer DataSOPlayer;
-    public DataSOEnemy DataSOEnemy;
+    public DataSOPlayer DataSOPlayer; // script table object
+    public DataSOEnemy DataSOEnemy; 
 }

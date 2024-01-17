@@ -136,21 +136,21 @@ MonoBehaviour:
   - TypeEnemy: 15
     skeleton: {fileID: 11400000, guid: 23265225acf1b604a97f755d1781db9d, type: 2}
     Damage: 3
-    HP: 300
+    HP: 200
     speed: 0.05
     timeAttack: 2
     quantityCoinKill: 0
     quantityGoldKill: 50
   - TypeEnemy: 16
-    skeleton: {fileID: 11400000, guid: 23265225acf1b604a97f755d1781db9d, type: 2}
+    skeleton: {fileID: 11400000, guid: 9e06f3af611860d439d9ff166dbad05c, type: 2}
     Damage: 5
     HP: 500
     speed: 0.08
     timeAttack: 2
     quantityCoinKill: 0
     quantityGoldKill: 30
-  - TypeEnemy: 16
-    skeleton: {fileID: 11400000, guid: 23265225acf1b604a97f755d1781db9d, type: 2}
+  - TypeEnemy: 17
+    skeleton: {fileID: 11400000, guid: b2eaa243e0e548941a3c52c347acf75d, type: 2}
     Damage: 7
     HP: 800
     speed: 0.08

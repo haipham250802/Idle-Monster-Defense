@@ -21,6 +21,8 @@ public class UpgradeAttackSpeed : UpgradeBase
         if (GamePlayManager.Ins.GetQuantityCoin() < CoinUpgrade) return;
         Turrent.Ins.indexUpradeAttackSpeed += 1;
         Turrent.Ins.SetAttackSpeed(Turrent.Ins.indexUpradeAttackSpeed);
+        GamePlayManager.Ins._QuantityCoin -= CoinUpgrade;
+        UIGamePlay.Ins.SetQuantityCoin(GamePlayManager.Ins._QuantityCoin);
         initUpgradeAttackSpeedStart();
     }
 }

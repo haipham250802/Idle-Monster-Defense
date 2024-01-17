@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     }
     private void spawnFX()
     {
-        GameObject fxHitClone = SimplePool.Spawn(fxHit, transform.position, Quaternion.identity);
+        SimplePool.Spawn(fxHit, transform.position, Quaternion.identity);
     }
     public void SetDamageBonus(float damage)
     {

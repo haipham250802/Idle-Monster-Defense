@@ -6,6 +6,13 @@ public class EnumManager : MonoBehaviour
 {
    
 }
+public enum TypeShopElement
+{
+    NONE = -1,
+    PRIMARY,
+    ADVANCED,
+    SUPER_ADVANCED
+}
 public enum TypeScenes
 {
     NONE = -1,

@@ -21,6 +21,8 @@ public class UpgradeDamage : UpgradeBase
         if (GamePlayManager.Ins.GetQuantityCoin() < CoinUpgrade) return;
         Turrent.Ins.indexUpradeDamage += 1;
         Turrent.Ins.SetDamage(Turrent.Ins.indexUpradeDamage);
+        GamePlayManager.Ins._QuantityCoin -= CoinUpgrade;
+        UIGamePlay.Ins.SetQuantityCoin(GamePlayManager.Ins._QuantityCoin);
         initUpgradeDamageStart();
         UIGamePlay.Ins.SetTextDamage(Turrent.Ins.Damage);
     }

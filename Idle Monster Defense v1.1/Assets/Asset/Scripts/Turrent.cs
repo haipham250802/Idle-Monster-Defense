@@ -21,6 +21,8 @@ public class Turrent : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Bullet bulletSpawn;
     [SerializeField] HeatlhBar healthBar;
+    [SerializeField] private GameObject fxHit;
+
 
     public float Damage => damage;
     public float AttackSpeed => fireRate;
@@ -68,7 +70,10 @@ public class Turrent : MonoBehaviour
         UIGamePlay.Ins.SetTextHp(hp);
         UpdateRangeAttack();
     }
-
+    private void spawnFX()
+    {
+        SimplePool.Spawn(fxHit, transform.position, Quaternion.identity);
+    }
     private void Update()
     {
         if (!isDead)
@@ -156,6 +161,7 @@ public class Turrent : MonoBehaviour
     {
         currentHp -= attack;
         healthBar.UpdateFillBar(currentHp, hp);
+        spawnFX();
         if (currentHp < 0)
         {
             currentHp = 0;
@@ -174,6 +180,7 @@ public class Turrent : MonoBehaviour
         EnemyBase enemy = calculateEnmeyNearest();
         if (enemy != null)
         {
+            GameManager.Ins.AudioManager.PlaySound(TypeAudioClip.BULLET);
             GameObject bullet = SimplePool.Spawn(bulletSpawn.gameObject, Vector3.zero, Quaternion.identity);
             bullet.transform.position = transform.position;
             bullet.GetComponent<Bullet>().SetDamageBonus(damage);

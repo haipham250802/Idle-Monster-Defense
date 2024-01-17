@@ -62,3 +62,6 @@ TagManager:
   - name: UI
     uniqueID: 3830060203
     locked: 0
+  - name: FX Top
+    uniqueID: 3422032545
+    locked: 0

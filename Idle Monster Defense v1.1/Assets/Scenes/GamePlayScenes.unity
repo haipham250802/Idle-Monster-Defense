@@ -2085,7 +2085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &608028647
 Transform:
   m_ObjectHideFlags: 0
@@ -7236,6 +7236,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1557130841}
   bulletSpawn: {fileID: 4720103185162063486, guid: f4d2e714fc79181429dcaf929c247a03, type: 3}
   healthBar: {fileID: 1062280065}
+  fxHit: {fileID: 2682013530471039466, guid: 2b8dc8965a9380146821e837ebdcedad, type: 3}
   DamageStart: 0
   HpStart: 0
   AttackSpeedStart: 0

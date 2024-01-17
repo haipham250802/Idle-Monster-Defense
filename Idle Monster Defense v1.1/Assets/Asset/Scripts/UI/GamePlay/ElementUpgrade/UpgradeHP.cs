@@ -21,6 +21,8 @@ public class UpgradeHP : UpgradeBase
         if (GamePlayManager.Ins.GetQuantityCoin() < CoinUpgrade) return;
         Turrent.Ins.indexUpradeHp += 1;
         Turrent.Ins.SetHp(Turrent.Ins.indexUpradeHp);
+        GamePlayManager.Ins._QuantityCoin -= CoinUpgrade;
+        UIGamePlay.Ins.SetQuantityCoin(GamePlayManager.Ins._QuantityCoin);
         initUpgradeHPStart();
         UIGamePlay.Ins.SetTextHp(Turrent.Ins.HP);
     }

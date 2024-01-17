@@ -20,6 +20,11 @@ public class GamePlayManager : MonoBehaviour
         get { return spawnEnemyController; }
         set { spawnEnemyController = value; }
     }
+    public int _QuantityCoin
+    {
+        get { return QuantityCoin; }
+        set { QuantityCoin = value; }
+    }
     public HeatlhBar HealthBar => healthBar;
     public bool isLose;
     public bool isShowPopUpLose;

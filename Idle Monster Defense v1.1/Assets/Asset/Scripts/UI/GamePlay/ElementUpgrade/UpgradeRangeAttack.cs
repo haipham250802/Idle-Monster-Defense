@@ -21,6 +21,8 @@ public class UpgradeRangeAttack : UpgradeBase
         if (GamePlayManager.Ins.GetQuantityCoin() < CoinUpgrade) return;
         Turrent.Ins.indexUpradeRangeAttack += 1;
         Turrent.Ins.SetRangeAttack(Turrent.Ins.indexUpradeRangeAttack);
+        GamePlayManager.Ins._QuantityCoin -= CoinUpgrade;
+        UIGamePlay.Ins.SetQuantityCoin(GamePlayManager.Ins._QuantityCoin);
         initUpgradeRangeAttackStart();
         Turrent.Ins.UpdateRangeAttack();
     }
