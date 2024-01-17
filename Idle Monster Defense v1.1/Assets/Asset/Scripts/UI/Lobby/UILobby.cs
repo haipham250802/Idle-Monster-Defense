@@ -29,7 +29,7 @@ public class UILobby : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    public void Onstart()
+    public void Start()
     {
         initButton();
         initView();
@@ -71,6 +71,10 @@ public class UILobby : MonoBehaviour
             default:
                 break;
         }
+    }
+    public void SetTextQuantityGold(int gold)
+    {
+        quantityGoldTxt.text = gold.ToString();
     }
     public void transitionFight()
     {

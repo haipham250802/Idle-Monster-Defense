@@ -6101,12 +6101,8 @@ MonoBehaviour:
   upgradeButton: {fileID: 881891513}
   shopButton: {fileID: 754728640}
   content: {fileID: 801810087}
-  posGold: {fileID: 0}
   quantityGoldTxt: {fileID: 871387431}
   quantityGemTxt: {fileID: 1564723157}
-  goldPrefab: {fileID: 0}
-  iconZone: {fileID: 190550283}
-  nameZone: {fileID: 924924300}
 --- !u!1 &1902762477
 GameObject:
   m_ObjectHideFlags: 0
